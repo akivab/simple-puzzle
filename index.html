@@ -1,0 +1,57 @@
+<html>
+<head>
+  <script src="puzzle.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular.min.js"></script>
+  <script>
+    function PuzzleCtrl($scope) {
+      $scope.createPuzzle = function() {
+        createPuzzle({
+          divId: "main",
+          imgSrc: $scope.imageSrc,
+          height: 400,
+          rows: 3,
+          cols: 3,
+          callback: function() { eval($scope.callback); }
+        });
+      };
+      $scope.imageSrc = '1.jpg';
+      $scope.action = 'generate puzzle';
+      $scope.callback = 'alert("Yee haw!");'
+    }
+  </script>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"/>
+  <style>
+  .puzzleForm {
+    width: 300px;
+    padding: 20px;
+    float: left;
+  }
+  #main {
+    float: left;
+  }
+  </style>
+</head>
+<body>
+<div ng-app ng-controller="PuzzleCtrl">
+  <div class="jumbotron masthead">
+    <h3>Simple Puzzle</h3>
+    <p>Fork at <a href="https://github.com/akivab/simple-puzzle/">https://github.com/akivab/simple-puzzle</a></p>
+  </div>
+  <form class="form puzzleForm">
+    <div class="form-group">
+      Image source: <input class="form-control" type='text' ng-model='imageSrc' />
+    </div>
+
+    <div class="form-group">
+      Callback function: <textarea class="form-control" ng-model='callback'></textarea>
+    </div>
+
+    <div class="form-group">
+      <button id="ok" ng-click="createPuzzle()" class="btn">{{ action }}</button>
+    </div>
+  </form>
+
+  <div id="main"></div>
+</div>
+</body>
+</html>
