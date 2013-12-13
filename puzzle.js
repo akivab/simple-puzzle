@@ -15,8 +15,8 @@ function guid() {
 
 function createDiv(append) {
   var div = document.createElement('div');
-  div.id = guid();
   if (append) {
+    div.id = guid();
     document.body.appendChild(div);
   }
   return div;
