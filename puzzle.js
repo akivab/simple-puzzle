@@ -74,9 +74,9 @@ function Puzzle(divId, imgSrc, width, height, rows, cols, callback) {
 
 Puzzle.prototype.addListeners = function() {
   var div = $(this.divId);
-  div.onmousemove = this.onmousemove();
-  div.onmousedown = this.onmousedown();
-  div.onmouseup = this.onmouseup();
+  div.onmousemove = div.ontouchstart = this.onmousemove();
+  div.onmousedown = div.ontouchmove = this.onmousedown();
+  div.onmouseup = div.ontouchend = div.ontouchcancel = this.onmouseup();
 };
 
 Puzzle.prototype.removeListeners = function() {
