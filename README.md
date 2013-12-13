@@ -1,3 +1,4 @@
+Usage:
 Options:
   width
   height
