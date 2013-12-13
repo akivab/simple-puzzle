@@ -14,7 +14,8 @@
           callback: function() { eval($scope.callback); }
         });
       };
-      $scope.imageSrc = '1.jpg';
+      $scope.ldap = window.location.hash || 'akivab';
+      $scope.imageSrc = '//orginfo.corp.google.com/' + $scope.ldap;
       $scope.action = 'generate puzzle';
       $scope.callback = 'alert("Yee haw!");'
     }
