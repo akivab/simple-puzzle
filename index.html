@@ -14,12 +14,7 @@
           callback: function() { eval($scope.callback); }
         });
       };
-      var ldap = $window.location.hash.substring(1);
-      if (ldap) {
-        $scope.imageSrc = '//orginfo.corp.google.com/' + ldap + '/photo';
-      } else {
-        $scope.imageSrc = '1.jpg';
-      }
+      $scope.imageSrc = '1.jpg';
       $scope.action = 'generate puzzle';
       $scope.callback = 'alert("Yee haw!");'
     }
