@@ -3,7 +3,7 @@
   <script src="puzzle.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular.min.js"></script>
   <script>
-    function PuzzleCtrl($scope) {
+    function PuzzleCtrl($scope, $location) {
       $scope.createPuzzle = function() {
         createPuzzle({
           divId: "main",
@@ -14,8 +14,12 @@
           callback: function() { eval($scope.callback); }
         });
       };
-      $scope.ldap = window.location.hash || 'akivab';
-      $scope.imageSrc = '//orginfo.corp.google.com/' + $scope.ldap;
+      var ldap = $location.search('name');
+      if (ldap) {
+        $scope.imageSrc = '//orginfo.corp.google.com/' + ldap + '/photo';
+      } else {
+        $scope.imageSrc = '1.jpg';
+      }
       $scope.action = 'generate puzzle';
       $scope.callback = 'alert("Yee haw!");'
     }
