@@ -3,7 +3,7 @@
   <script src="puzzle.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular.min.js"></script>
   <script>
-    function PuzzleCtrl($scope, $location) {
+    function PuzzleCtrl($scope, $window) {
       $scope.createPuzzle = function() {
         createPuzzle({
           divId: "main",
@@ -14,7 +14,7 @@
           callback: function() { eval($scope.callback); }
         });
       };
-      var ldap = $location.search('name');
+      var ldap = $window.location.hash.substring(1);
       if (ldap) {
         $scope.imageSrc = '//orginfo.corp.google.com/' + ldap + '/photo';
       } else {
